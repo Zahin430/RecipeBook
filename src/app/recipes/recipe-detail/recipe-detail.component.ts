@@ -27,11 +27,11 @@ export class RecipeDetailComponent implements OnInit {
       }
     );
   }
-
     onAddToShoppingList() {
         this.recipeService.addIngredientsToShoppingList(this.recipe.ingredients);
     }
 
+    // Adding editing method are routes to the navigation port with relative path
     onEditRecipe() {
       this.router.navigate(['edit'], {relativeTo: this.route});
       // this.router.navigate(['../', this.id, 'edit'], {relativeTo: this.route});
