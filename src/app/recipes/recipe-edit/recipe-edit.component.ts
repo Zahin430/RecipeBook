@@ -96,5 +96,8 @@ export class RecipeEditComponent implements OnInit {
     });
   }
 
-
+  // The <FormArray> type conversion needs to be added here to avoid compilation errors from TypeScript's side.
+  getControls() {
+    return (<FormArray>this.recipeForm.get('ingredients')).controls;
+  }
 }

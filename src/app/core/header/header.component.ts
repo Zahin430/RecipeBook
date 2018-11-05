@@ -1,4 +1,6 @@
-import { DataStorageService } from './../shared/data-storage.service';
+import { AuthService } from '../../auth/auth.service';
+import { DataStorageService } from '../../shared/data-storage.service';
+
 import { Component } from '@angular/core';
 import { Response } from '@angular/http';
 
@@ -9,7 +11,8 @@ import { Response } from '@angular/http';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  constructor(private dataStorageService: DataStorageService) {}
+  constructor(private dataStorageService: DataStorageService,
+              private authService: AuthService) {}
 
   onSaveData() {
     this.dataStorageService.storeRecipes()
@@ -23,5 +26,14 @@ export class HeaderComponent {
   // Using the clickListener on the html template we are fetching the data
   onFetchData() {
     this.dataStorageService.getRecipes();
+  }
+
+  onLogout() {
+   this.authService.logout();
+  }
+
+  // Accessed the authService's method to use in the template
+  isAuthenticated() {
+    return this.authService.isAuthenticated();
   }
 }
